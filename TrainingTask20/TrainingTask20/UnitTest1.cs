@@ -7,7 +7,6 @@ using System.Threading;
 namespace TrainingTask20
 {
     public class Tests
-
     {
         private WebDriver driver;
 
@@ -16,27 +15,29 @@ namespace TrainingTask20
         {
             driver = new ChromeDriver();
             driver.Url = "https://yandex.by/";
+            driver.Manage().Window.Maximize();
         }
 
         [Test]
         public void SuccessfullLogin()
         {
-            IWebElement startlogin = driver.FindElement(By.ClassName("desk-notif-card__login-new-item-title"));
-            startlogin.Click();
-            IWebElement userfield = driver.FindElement(By.Id("passp-field-login"));
-            userfield.SendKeys("mastermister123");
-            IWebElement continuelogin = driver.FindElement(By.Id("passp:sign-in"));
-            continuelogin.Click();
+            IWebElement startLoginButton = driver.FindElement(By.ClassName("desk-notif-card__login-new-item-title"));
+            startLoginButton.Click();
+            IWebElement usernameField = driver.FindElement(By.Id("passp-field-login"));
+            usernameField.SendKeys("mastermister123");
+            IWebElement continueLoginButton = driver.FindElement(By.Id("passp:sign-in"));
+            continueLoginButton.Click();
             Thread.Sleep(2000);
-            IWebElement passwordfield = driver.FindElement(By.Name("passwd"));
-            passwordfield.SendKeys("mastermister1231");
-            IWebElement signin = driver.FindElement(By.Id("passp:sign-in"));
-            signin.Click();
+            IWebElement passwordField = driver.FindElement(By.Name("passwd"));
+            passwordField.SendKeys("mastermister1231");
+            IWebElement signInButton = driver.FindElement(By.Id("passp:sign-in"));
+            signInButton.Click();
             Thread.Sleep(2000);
-            var success = driver.FindElement(By.ClassName("desk-notif-card__title")).Text;
-            var loggedin = "mastermister123";
+            var userLabelDisplayed = driver.FindElement(By.ClassName("desk-notif-card__title")).Text;
+            var userLoggedInLabel = "mastermister1233";
 
-            Assert.AreEqual(loggedin,success);
+            Assert.AreEqual(userLabelDisplayed, userLoggedInLabel, "User Label is not found on page.");
+                
         }
     }
 }

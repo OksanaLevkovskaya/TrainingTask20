@@ -12,23 +12,23 @@ namespace TrainingTask20
     public class Variables
     {
 
-        public void LogintoAccount()
+        public static void LogintoAccount()
         {
-            IWebDriver driver = new ChromeDriver();
+            var driver = new ChromeDriver();
             driver.Url="https://yandex.by/";
 
-            IWebElement startlogin = driver.FindElement(By.ClassName("desk-notif-card__login-new-item-title"));
-            IWebElement userfield = driver.FindElement(By.Id("passp-field-login"));
-            IWebElement continuelogin = driver.FindElement(By.Id("passp:sign-in"));
-            IWebElement passwordfield = driver.FindElement(By.Name("passwd"));
-            IWebElement signin = driver.FindElement(By.Id("passp:sign-in"));
-           
+            IWebElement startLoginButton = driver.FindElement(By.ClassName("desk-notif-card__login-new-item-title"));
+            IWebElement usernameField = driver.FindElement(By.Id("passp-field-login"));
+            IWebElement continueLoginButton = driver.FindElement(By.Id("passp:sign-in"));
+            IWebElement passwordField = driver.FindElement(By.Name("passwd"));
+            IWebElement signInButton = driver.FindElement(By.Id("passp:sign-in"));
 
-            startlogin.Click();
-            userfield.SendKeys("mastermister123");
-            continuelogin.Click();
-            passwordfield.SendKeys("mastermister123");
-            signin.Click();
+
+            startLoginButton.Click();
+            usernameField.SendKeys("mastermister123");
+            continueLoginButton.Click();
+            passwordField.SendKeys("mastermister123");
+            signInButton.Click();
             driver.Quit();
 
         }
